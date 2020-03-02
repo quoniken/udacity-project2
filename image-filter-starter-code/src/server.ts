@@ -30,7 +30,9 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   /**************************************************************************** */
   app.get("/filteredimage:image_url?", async ( req, res ) => {
     let imgUrl = req.query.image_url;
-
+    
+    // why reinvent the wheel
+    // using regex found at this stackoverflow topic: https://stackoverflow.com/questions/5717312/regular-expression-for-url
     const VALID_URL_REG_EX = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g;
 
     //check imgUrl is not empty
