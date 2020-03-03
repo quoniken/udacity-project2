@@ -29,15 +29,15 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   /**************************************************************************** */
   app.get("/filteredimage:image_url?", async ( req, res ) => {
-    let imgUrl = req.query.image_url;
+    let imgUrl: string = req.query.image_url;
     
     // why reinvent the wheel
     // using regex found at this stackoverflow topic: https://stackoverflow.com/questions/5717312/regular-expression-for-url
-    const VALID_URL_REG_EX = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g;
+    const VALID_URL_REG_EX: RegExp = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g;
 
     //check imgUrl is not empty
     if(!imgUrl) {
-      console.log("URL is empty");
+      //console.log("URL is empty");
       return res.status(400)
                 .send('image url is required');
     }
@@ -45,9 +45,11 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     {
       // validate imgUrl
       // compare it against our regex to see if its a valid url
+      // maybe also check that imgUrl points to a public location
+      // and has a jpg/png file
       if(VALID_URL_REG_EX.exec(imgUrl))
       {
-        const x = await filterImageFromURL(imgUrl);
+        const x: string = await filterImageFromURL(imgUrl);
 
         return res.status(201).sendFile(x, async (err) => {
           let fileArr = [];
@@ -57,7 +59,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       }
       else
       {
-        console.log('Not a URI');
+        //console.log('Not a URI');
         return res.status(400).send("not a valid url");
       }
     }
