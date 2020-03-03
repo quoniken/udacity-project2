@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "8470ea56-86f1-4467-ae2b-b813c5995ceb",
+		"name": "cloud-cdnd-c2-final quon-dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8082/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://udagram-image-filter-quon-dev.us-east-2.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png EB Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST2}}/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png",
+					"host": [
+						"{{HOST2}}"
+					],
+					"path": [
+						"filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5887df52-1889-4e1f-82ee-054ab37b450a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5e332dfe-c833-430b-b947-ab6c00311c28",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3f17ee35-93d7-4e37-9d3e-dcd989489fb5",
+			"key": "HOST",
+			"value": "localhost:8082",
+			"type": "string"
+		},
+		{
+			"id": "62aaec0a-7152-4b46-9057-c16beccf3d7e",
+			"key": "EB",
+			"value": "http://udagram-image-filter-quon-dev.us-east-2.elasticbeanstalk.com",
+			"type": "string"
+		},
+		{
+			"id": "2b110648-4a93-42e0-88b8-cf50a6e18d59",
+			"key": "PROD",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
